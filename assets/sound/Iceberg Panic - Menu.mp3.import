@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://sjl885pqyvx7"
+path="res://.godot/imported/Iceberg Panic - Menu.mp3-0ce582ac8cd781b2e6c5aa096f2b176b.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/Iceberg Panic - Menu.mp3"
+dest_files=["res://.godot/imported/Iceberg Panic - Menu.mp3-0ce582ac8cd781b2e6c5aa096f2b176b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

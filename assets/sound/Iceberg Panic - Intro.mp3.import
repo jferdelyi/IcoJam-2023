@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://djn0e7xfuyfxs"
+path="res://.godot/imported/Iceberg Panic - Intro.mp3-eea1e0ead7481b931b454b5c10be3b03.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/Iceberg Panic - Intro.mp3"
+dest_files=["res://.godot/imported/Iceberg Panic - Intro.mp3-eea1e0ead7481b931b454b5c10be3b03.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

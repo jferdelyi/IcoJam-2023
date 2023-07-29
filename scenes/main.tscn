@@ -1,12 +1,185 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8v6fxh2da0sq"]
+[gd_scene load_steps=16 format=3 uid="uid://b8v6fxh2da0sq"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_87bgg"]
-[ext_resource type="Texture2D" uid="uid://dhwiaj26rbgir" path="res://icon.svg" id="2_8w3eq"]
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_8dusc"]
+[ext_resource type="PackedScene" uid="uid://bkhn138c217js" path="res://scenes/Iceberg.tscn" id="2_1w7y2"]
+[ext_resource type="Texture2D" uid="uid://gfv7iwemfct2" path="res://assets/images/background.png" id="2_ulnm3"]
+[ext_resource type="Texture2D" uid="uid://bwhy3yucq8wv1" path="res://assets/images/OCEAN_3.png" id="3_krhq7"]
+[ext_resource type="Texture2D" uid="uid://bf5s8g78cpf4u" path="res://assets/images/OCEAN-2.png" id="4_k7x1v"]
+[ext_resource type="Texture2D" uid="uid://cx01vtd5p5ckf" path="res://assets/images/OCEAN_1.png" id="5_vijuf"]
+[ext_resource type="AudioStream" uid="uid://dhqy01gh67yw5" path="res://assets/sound/Game over.mp3" id="6_b2ffo"]
+[ext_resource type="Texture2D" uid="uid://70fxx71kdllb" path="res://assets/images/vague-Game-over.png" id="8_hilsa"]
+[ext_resource type="AudioStream" uid="uid://diuytpnbiurx0" path="res://assets/sound/Bouton menu.mp3" id="9_eaiom"]
+
+[sub_resource type="Animation" id="Animation_qjjwt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 361)]
+}
+
+[sub_resource type="Animation" id="Animation_rewxc"]
+resource_name = "gameover"
+step = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0001, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 1280), Vector2(640, 380)]
+}
+
+[sub_resource type="Animation" id="Animation_rjtrq"]
+resource_name = "move1"
+length = 2.0
+loop_mode = 1
+step = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(640, 360), Vector2(640, 400), Vector2(640, 360)]
+}
+
+[sub_resource type="Animation" id="Animation_2val1"]
+resource_name = "move2"
+length = 3.0
+loop_mode = 1
+step = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(640, 360), Vector2(640, 400), Vector2(640, 360)]
+}
+
+[sub_resource type="Animation" id="Animation_m5jnh"]
+resource_name = "move3"
+length = 5.0
+loop_mode = 1
+step = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(640, 360), Vector2(640, 400), Vector2(640, 360)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5kpfu"]
+_data = {
+"RESET": SubResource("Animation_qjjwt"),
+"gameover": SubResource("Animation_rewxc"),
+"move1": SubResource("Animation_rjtrq"),
+"move2": SubResource("Animation_2val1"),
+"move3": SubResource("Animation_m5jnh")
+}
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_87bgg")
+script = ExtResource("1_8dusc")
 
-[node name="Icon" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(576, 324)
-texture = ExtResource("2_8w3eq")
+[node name="AnimationOcean1" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Ocean1")
+reset_on_save = false
+playback_process_mode = 0
+libraries = {
+"": SubResource("AnimationLibrary_5kpfu")
+}
+
+[node name="AnimationOcean2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Ocean2")
+reset_on_save = false
+playback_process_mode = 0
+libraries = {
+"": SubResource("AnimationLibrary_5kpfu")
+}
+
+[node name="AnimationOcean3" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Ocean3")
+reset_on_save = false
+playback_process_mode = 0
+libraries = {
+"": SubResource("AnimationLibrary_5kpfu")
+}
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_ulnm3")
+
+[node name="Ocean3" type="Sprite2D" parent="."]
+position = Vector2(640, 361)
+texture = ExtResource("3_krhq7")
+
+[node name="Ocean2" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("4_k7x1v")
+
+[node name="Iceberg" parent="." instance=ExtResource("2_1w7y2")]
+position = Vector2(633, 556)
+
+[node name="GameOverMenu" type="VBoxContainer" parent="."]
+visible = false
+offset_top = 32.0
+offset_right = 1282.0
+offset_bottom = 720.0
+
+[node name="Panel" type="PanelContainer" parent="GameOverMenu"]
+layout_mode = 2
+
+[node name="GameOver" type="Label" parent="GameOverMenu/Panel"]
+layout_mode = 2
+text = "GAME OVER :("
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="GameOverMenu"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Ocean1" type="Sprite2D" parent="."]
+position = Vector2(640, 365.5)
+scale = Vector2(1, 1.01528)
+texture = ExtResource("5_vijuf")
+
+[node name="Vague-game-over" type="Sprite2D" parent="."]
+position = Vector2(640, 1280)
+texture = ExtResource("8_hilsa")
+
+[node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 32)
+stream = ExtResource("6_b2ffo")
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_eaiom")
+
+[connection signal="game_over" from="Iceberg" to="." method="_on_iceberg_game_over"]
+[connection signal="pressed" from="GameOverMenu/Restart" to="." method="_on_restart_pressed"]

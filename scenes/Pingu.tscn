@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://22l4gc5cao4i"]
+
+[ext_resource type="Script" path="res://scripts/Pingu.gd" id="1_agnm5"]
+[ext_resource type="Texture2D" uid="uid://cw8kxktcgkpke" path="res://assets/images/pingu-RECTANGLE.png" id="2_w3kd7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k2qch"]
+rough = true
+bounce = 25.3
+absorbent = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wccft"]
+size = Vector2(32, 32)
+
+[node name="Pingu" type="RigidBody2D"]
+collision_mask = 3
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_k2qch")
+max_contacts_reported = 10
+contact_monitor = true
+can_sleep = false
+freeze_mode = 1
+script = ExtResource("1_agnm5")
+metadata/_edit_horizontal_guides_ = [-27.0, -31.0, -20.0]
+
+[node name="ClickableArea" type="Area2D" parent="."]
+
+[node name="ClickableAreaCollision" type="CollisionShape2D" parent="ClickableArea"]
+shape = SubResource("RectangleShape2D_wccft")
+
+[node name="PinguSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_w3kd7")
+
+[node name="PinguCollisionTriangle" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(16, 16, -16, 16, 0, -16)
+disabled = true
+
+[node name="PinguCollision" type="CollisionShape2D" parent="."]
+
+[node name="PinguSound" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="mouse_entered" from="ClickableArea" to="." method="_on_clickable_area_mouse_entered"]
+[connection signal="mouse_exited" from="ClickableArea" to="." method="_on_clickable_area_mouse_exited"]

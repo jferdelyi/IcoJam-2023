@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcgpwx6fkwgqi"]
+
+[ext_resource type="Script" path="res://scripts/IcebergBlockSpot.gd" id="1_372w1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqeuh"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_qeyv2"]
+size = Vector2(20, 20)
+
+[node name="IcebergBlockSpot" type="Area2D"]
+script = ExtResource("1_372w1")
+
+[node name="IcebergBlockSpotCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xqeuh")
+
+[node name="IcebergBlockSpotSprite" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_qeyv2")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

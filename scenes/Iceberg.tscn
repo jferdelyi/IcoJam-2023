@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkhn138c217js"]
+
+[ext_resource type="Script" path="res://scripts/Iceberg.gd" id="1_pmx6x"]
+[ext_resource type="PackedScene" uid="uid://b5hr0d2xwci7r" path="res://scenes/IcebergBlock.tscn" id="2_gl8f5"]
+[ext_resource type="Script" path="res://scripts/Blocks.gd" id="2_q12vs"]
+[ext_resource type="AudioStream" uid="uid://qveynbmqpgpo" path="res://assets/sound/Vent.mp3" id="4_nyr65"]
+[ext_resource type="AudioStream" uid="uid://cwdctt7y5cuq8" path="res://assets/sound/Destruction bloc glace.mp3" id="5_ntagd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vn57p"]
+rough = true
+absorbent = true
+
+[node name="Iceberg" type="Node2D"]
+script = ExtResource("1_pmx6x")
+
+[node name="Blocks" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_vn57p")
+gravity_scale = 128.0
+custom_integrator = true
+can_sleep = false
+linear_velocity = Vector2(0.2, 0.2)
+linear_damp_mode = 1
+linear_damp = 30.845
+script = ExtResource("2_q12vs")
+metadata/_edit_vertical_guides_ = []
+
+[node name="IcebergBlock1" parent="Blocks" groups=["Iceberg"] instance=ExtResource("2_gl8f5")]
+position = Vector2(-48, 0)
+
+[node name="IcebergBlock2" parent="Blocks" groups=["Iceberg"] instance=ExtResource("2_gl8f5")]
+position = Vector2(-16, 0)
+
+[node name="IcebergBlock3" parent="Blocks" groups=["Iceberg"] instance=ExtResource("2_gl8f5")]
+position = Vector2(16, 0)
+
+[node name="IcebergBlock4" parent="Blocks" groups=["Iceberg"] instance=ExtResource("2_gl8f5")]
+position = Vector2(48, 0)
+
+[node name="IcebergBlock5" parent="Blocks" groups=["Iceberg"] instance=ExtResource("2_gl8f5")]
+position = Vector2(-80, 0)
+
+[node name="IcebergBlock6" parent="Blocks" groups=["Iceberg"] instance=ExtResource("2_gl8f5")]
+position = Vector2(-16, 32)
+
+[node name="IcebergBlock7" parent="Blocks" groups=["Iceberg"] instance=ExtResource("2_gl8f5")]
+position = Vector2(16, 32)
+
+[node name="IcebergBlock8" parent="Blocks" groups=["Iceberg"] instance=ExtResource("2_gl8f5")]
+position = Vector2(80, 0)
+
+[node name="IcebergBlock9" parent="Blocks" groups=["Iceberg"] instance=ExtResource("2_gl8f5")]
+position = Vector2(-48, 32)
+
+[node name="IcebergBlock10" parent="Blocks" groups=["Iceberg"] instance=ExtResource("2_gl8f5")]
+position = Vector2(-16, 64)
+
+[node name="IcebergBlock11" parent="Blocks" groups=["Iceberg"] instance=ExtResource("2_gl8f5")]
+position = Vector2(16, 64)
+
+[node name="IcebergBlock12" parent="Blocks" groups=["Iceberg"] instance=ExtResource("2_gl8f5")]
+position = Vector2(48, 32)
+
+[node name="IcebergBlock3" parent="." instance=ExtResource("2_gl8f5")]
+position = Vector2(396, 110)
+is_floating = true
+
+[node name="IcebergBlock4" parent="." instance=ExtResource("2_gl8f5")]
+position = Vector2(326, 132)
+is_floating = true
+
+[node name="Wind" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_nyr65")
+volume_db = -10.0
+autoplay = true
+
+[node name="DestructionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ntagd")
+
+[connection signal="destroyed" from="Blocks/IcebergBlock1" to="." method="_on_block_destroyed"]
+[connection signal="set" from="Blocks/IcebergBlock1" to="." method="_on_block_set"]
+[connection signal="destroyed" from="Blocks/IcebergBlock2" to="." method="_on_block_destroyed"]
+[connection signal="set" from="Blocks/IcebergBlock2" to="." method="_on_block_set"]
+[connection signal="destroyed" from="Blocks/IcebergBlock3" to="." method="_on_block_destroyed"]
+[connection signal="set" from="Blocks/IcebergBlock3" to="." method="_on_block_set"]
+[connection signal="destroyed" from="Blocks/IcebergBlock4" to="." method="_on_block_destroyed"]
+[connection signal="set" from="Blocks/IcebergBlock4" to="." method="_on_block_set"]
+[connection signal="destroyed" from="Blocks/IcebergBlock5" to="." method="_on_block_destroyed"]
+[connection signal="set" from="Blocks/IcebergBlock5" to="." method="_on_block_set"]
+[connection signal="destroyed" from="Blocks/IcebergBlock6" to="." method="_on_block_destroyed"]
+[connection signal="set" from="Blocks/IcebergBlock6" to="." method="_on_block_set"]
+[connection signal="destroyed" from="Blocks/IcebergBlock7" to="." method="_on_block_destroyed"]
+[connection signal="set" from="Blocks/IcebergBlock7" to="." method="_on_block_set"]
+[connection signal="destroyed" from="Blocks/IcebergBlock8" to="." method="_on_block_destroyed"]
+[connection signal="set" from="Blocks/IcebergBlock8" to="." method="_on_block_set"]
+[connection signal="destroyed" from="Blocks/IcebergBlock9" to="." method="_on_block_destroyed"]
+[connection signal="set" from="Blocks/IcebergBlock9" to="." method="_on_block_set"]
+[connection signal="destroyed" from="Blocks/IcebergBlock10" to="." method="_on_block_destroyed"]
+[connection signal="set" from="Blocks/IcebergBlock10" to="." method="_on_block_set"]
+[connection signal="destroyed" from="Blocks/IcebergBlock11" to="." method="_on_block_destroyed"]
+[connection signal="set" from="Blocks/IcebergBlock11" to="." method="_on_block_set"]
+[connection signal="destroyed" from="Blocks/IcebergBlock12" to="." method="_on_block_destroyed"]
+[connection signal="set" from="Blocks/IcebergBlock12" to="." method="_on_block_set"]
+[connection signal="destroyed" from="IcebergBlock3" to="." method="_on_block_destroyed"]
+[connection signal="get" from="IcebergBlock3" to="." method="_on_block_get"]
+[connection signal="set" from="IcebergBlock3" to="." method="_on_block_set"]
+[connection signal="destroyed" from="IcebergBlock4" to="." method="_on_block_destroyed"]
+[connection signal="get" from="IcebergBlock4" to="." method="_on_block_get"]
+[connection signal="set" from="IcebergBlock4" to="." method="_on_block_set"]

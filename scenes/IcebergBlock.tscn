@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5hr0d2xwci7r"]
+
+[ext_resource type="Script" path="res://scripts/IcebergBlock.gd" id="1_52wmm"]
+[ext_resource type="Texture2D" uid="uid://lv5rb1qxmmw3" path="res://assets/images/CUBE-ICE-01.png" id="1_wa43i"]
+[ext_resource type="PackedScene" uid="uid://dcgpwx6fkwgqi" path="res://scenes/IcebergBlockSpot.tscn" id="3_yr4iv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bdh0"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ahdb"]
+size = Vector2(32, 32)
+
+[node name="IcebergBlock" type="CollisionShape2D" groups=["Blocks"]]
+shape = SubResource("RectangleShape2D_3bdh0")
+script = ExtResource("1_52wmm")
+
+[node name="IcebergBlockSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_wa43i")
+
+[node name="IcebergBlockArea" type="Area2D" parent="."]
+
+[node name="IcebergBlockCollision" type="CollisionShape2D" parent="IcebergBlockArea"]
+shape = SubResource("RectangleShape2D_5ahdb")
+
+[node name="IcebergBlockCracks" type="Sprite2D" parent="."]
+
+[node name="IcebergBlockAdjacencies" type="Node2D" parent="."]
+
+[node name="Top" parent="IcebergBlockAdjacencies" node_paths=PackedStringArray("parent_block") instance=ExtResource("3_yr4iv")]
+visible = false
+position = Vector2(2.08165e-12, -32)
+parent_block = NodePath("../..")
+
+[node name="Bottom" parent="IcebergBlockAdjacencies" node_paths=PackedStringArray("parent_block") instance=ExtResource("3_yr4iv")]
+visible = false
+position = Vector2(2.08165e-12, 32)
+parent_block = NodePath("../..")
+
+[node name="Right" parent="IcebergBlockAdjacencies" node_paths=PackedStringArray("parent_block") instance=ExtResource("3_yr4iv")]
+visible = false
+position = Vector2(32, 2.08165e-12)
+parent_block = NodePath("../..")
+
+[node name="Left" parent="IcebergBlockAdjacencies" node_paths=PackedStringArray("parent_block") instance=ExtResource("3_yr4iv")]
+visible = false
+position = Vector2(-32, 2.08165e-12)
+parent_block = NodePath("../..")
+
+[connection signal="mouse_entered" from="IcebergBlockArea" to="." method="_on_iceberg_block_area_mouse_entered"]
+[connection signal="mouse_exited" from="IcebergBlockArea" to="." method="_on_iceberg_block_area_mouse_exited"]
+[connection signal="block_set" from="IcebergBlockAdjacencies/Top" to="." method="_on_block_set"]
+[connection signal="block_set" from="IcebergBlockAdjacencies/Bottom" to="." method="_on_block_set"]
+[connection signal="block_set" from="IcebergBlockAdjacencies/Right" to="." method="_on_block_set"]
+[connection signal="block_set" from="IcebergBlockAdjacencies/Left" to="." method="_on_block_set"]

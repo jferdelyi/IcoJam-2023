@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b35mvtu5xy3b4"
+path="res://.godot/imported/FX pingus 3.mp3-190d7011dcda4f9a1121456c9abbb15a.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/FX pingus 3.mp3"
+dest_files=["res://.godot/imported/FX pingus 3.mp3-190d7011dcda4f9a1121456c9abbb15a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
