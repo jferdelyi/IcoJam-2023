@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://djkojr4ceeq5x"]
+[gd_scene load_steps=6 format=3 uid="uid://djkojr4ceeq5x"]
 
 [ext_resource type="AudioStream" uid="uid://sjl885pqyvx7" path="res://assets/sound/Iceberg Panic - Menu.mp3" id="1_fg2vo"]
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_kwxuq"]
 [ext_resource type="AudioStream" uid="uid://diuytpnbiurx0" path="res://assets/sound/Bouton menu.mp3" id="2_6iydn"]
+[ext_resource type="Texture2D" uid="uid://bv6e5twj0iudl" path="res://assets/images/splash.png" id="2_omb5q"]
+[ext_resource type="Texture2D" uid="uid://d0f444jtjajvj" path="res://assets/images/Credit.png" id="3_7tov2"]
 
 [node name="MainMenu" type="VBoxContainer"]
 anchors_preset = 15
@@ -10,9 +12,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 2
 script = ExtResource("1_kwxuq")
 
-[node name="GameTitle" type="Label" parent="."]
+[node name="Illustration" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_omb5q")
+
+[node name="TitleContainer" type="PanelContainer" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="TitleContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 3.91
@@ -20,16 +33,25 @@ text = "Iceberg Panic"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Credit" type="Label" parent="."]
+[node name="CreditContainer" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Credit" type="Label" parent="CreditContainer"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 3.91
-text = "Jean-François Erdelyi Development (Godot4.1.1)
-Adrien Music & SFX (Ableton Live)
-Mélisande Rabillon Arts (Photoshop)"
+text = "Jean-François Erdelyi - Development (Godot4.1.1)
+K-Toll - Music & SFX (Ableton Live)
+Mélissande Rabillon - Arts (Photoshop)"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Credit2" type="Sprite2D" parent="CreditContainer"]
+position = Vector2(640, 360)
+texture = ExtResource("3_7tov2")
 
 [node name="ButtonsContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

@@ -11,7 +11,7 @@ var _mouse_over_block := false
 
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed and _mouse_over_block:
 				emit_signal("block_set", global_position)
 

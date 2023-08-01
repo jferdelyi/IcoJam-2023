@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkhn138c217js"]
+[gd_scene load_steps=8 format=3 uid="uid://bkhn138c217js"]
 
 [ext_resource type="Script" path="res://scripts/Iceberg.gd" id="1_pmx6x"]
 [ext_resource type="PackedScene" uid="uid://b5hr0d2xwci7r" path="res://scenes/IcebergBlock.tscn" id="2_gl8f5"]
 [ext_resource type="Script" path="res://scripts/Blocks.gd" id="2_q12vs"]
 [ext_resource type="AudioStream" uid="uid://qveynbmqpgpo" path="res://assets/sound/Vent.mp3" id="4_nyr65"]
 [ext_resource type="AudioStream" uid="uid://cwdctt7y5cuq8" path="res://assets/sound/Destruction bloc glace.mp3" id="5_ntagd"]
+[ext_resource type="AudioStream" uid="uid://um0onve6sikn" path="res://assets/sound/Vagues.mp3" id="5_rtyll"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vn57p"]
+friction = 0.1
 rough = true
-absorbent = true
 
 [node name="Iceberg" type="Node2D"]
 script = ExtResource("1_pmx6x")
@@ -18,12 +19,8 @@ collision_layer = 2
 collision_mask = 3
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_vn57p")
-gravity_scale = 128.0
 custom_integrator = true
-can_sleep = false
-linear_velocity = Vector2(0.2, 0.2)
-linear_damp_mode = 1
-linear_damp = 30.845
+constant_torque = 0.1
 script = ExtResource("2_q12vs")
 metadata/_edit_vertical_guides_ = []
 
@@ -73,6 +70,11 @@ is_floating = true
 
 [node name="Wind" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_nyr65")
+volume_db = -20.0
+autoplay = true
+
+[node name="Wave" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rtyll")
 volume_db = -10.0
 autoplay = true
 

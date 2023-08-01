@@ -11,7 +11,7 @@ absorbent = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wccft"]
 size = Vector2(32, 32)
 
-[node name="Pingu" type="RigidBody2D"]
+[node name="Pingu" type="RigidBody2D" groups=["Pingus"]]
 collision_mask = 3
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_k2qch")
@@ -37,6 +37,7 @@ disabled = true
 [node name="PinguCollision" type="CollisionShape2D" parent="."]
 
 [node name="PinguSound" type="AudioStreamPlayer2D" parent="."]
+volume_db = -9.941
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="mouse_entered" from="ClickableArea" to="." method="_on_clickable_area_mouse_entered"]

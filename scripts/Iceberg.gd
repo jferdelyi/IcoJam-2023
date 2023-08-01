@@ -6,7 +6,7 @@ signal game_over
 
 var _block_to_set :IcebergBlock
 var _elapsed_time := 0.0
-
+var _blocks_origin:Vector2 
 
 @onready var _blocks := $Blocks
 @onready var _destruction_sound := $DestructionSound
@@ -14,6 +14,7 @@ var _elapsed_time := 0.0
 
 
 func _ready() -> void:
+	_blocks_origin = _blocks.global_position
 	Global.game_over = false
 
 
@@ -21,6 +22,7 @@ func _process(delta: float) -> void:
 	if Global.game_over:
 		return
 	
+	_blocks.global_position = _blocks_origin
 	if _blocks.get_child_count() <= 0:
 		Global.game_over = true
 		emit_signal("game_over")
@@ -38,7 +40,6 @@ func _process(delta: float) -> void:
 			floating_block.connect("get", _on_block_get)
 			floating_block.connect("destroyed", _on_block_destroyed)
 			add_child(floating_block)
-			
 
 
 func show_available_spots() -> void:
@@ -71,9 +72,3 @@ func _on_block_set(new_position:Vector2) -> void:
 	_block_to_set.add_to_group("Iceberg")
 	hide_available_spots()
 	Global.block_clickable = true
-
-
-
-
-func _on_blocks_body_entered(body: Node) -> void:
-	print("PAT2")

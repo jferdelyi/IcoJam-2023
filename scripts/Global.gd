@@ -2,10 +2,11 @@ extends Node
 
 
 const game_over_sound = preload("res://assets/sound/Game over.mp3")
+const vistory_sound = preload("res://assets/sound/Victoire!.mp3")
 const menu_sound = preload("res://assets/sound/Iceberg Panic - Menu.mp3")
 const intro_sound = preload("res://assets/sound/Iceberg Panic - Intro.mp3")
 
-var debug := true
+var debug := false
 var block_clickable := true
 var game_over := false
 

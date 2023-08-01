@@ -1,5 +1,11 @@
 extends RigidBody2D
+class_name Pingu
 
+
+signal dead
+
+
+var on_the_cloud := true
 
 var _mouse_over_pingu := false
 var _mouse_clicked_pingu := false
@@ -42,8 +48,10 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent):
+	if on_the_cloud:
+		return
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed and _mouse_over_pingu:
 				_mouse_clicked_pingu = true
 				rotation = 0.0
@@ -60,6 +68,9 @@ func _unhandled_input(event: InputEvent):
 func _physics_process(_delta: float) -> void:
 	if _mouse_clicked_pingu:
 		global_position = get_viewport().get_mouse_position()
+	if global_position.y > 1000:
+		emit_signal("dead")
+		queue_free()
 
 
 func _on_clickable_area_mouse_entered() -> void:
@@ -71,5 +82,7 @@ func _on_clickable_area_mouse_exited() -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	_pingu_sound.stream = _pingu_sound_array[randi_range(0, 2)]
-	_pingu_sound.play()
+	if body is Blocks:
+		if not _pingu_sound.playing:
+			_pingu_sound.stream = _pingu_sound_array[randi_range(0, 2)]
+			_pingu_sound.play()

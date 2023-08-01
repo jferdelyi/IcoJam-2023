@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Iceberg Panic - Intro.mp3-eea1e0ead7481b931b4
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

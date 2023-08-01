@@ -2,10 +2,9 @@ extends VBoxContainer
 
 
 @onready var _music := $MenuMusic
-@onready var _credit := $Credit
+@onready var _credit := $CreditContainer
 @onready var _button_sound := $ButtonsContainer/ButtonSound
 @onready var _credit_sound := preload("res://assets/sound/Crédit.mp3")
-
 
 
 func _ready() -> void:

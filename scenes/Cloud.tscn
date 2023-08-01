@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://tppqpnrgm4by"]
+
+[ext_resource type="Texture2D" uid="uid://cp14pvg2fut1k" path="res://assets/images/nuages.png" id="1_njxkb"]
+[ext_resource type="Script" path="res://scripts/Cloud.gd" id="2_2n5he"]
+[ext_resource type="AudioStream" uid="uid://c221ll61wug63" path="res://assets/sound/ThreeTwoOne.mp3" id="3_ny8jc"]
+
+[node name="Cloud" type="Sprite2D"]
+position = Vector2(1027, 345)
+texture = ExtResource("1_njxkb")
+script = ExtResource("2_2n5he")
+
+[node name="ThreeTwoOne" type="Label" parent="."]
+offset_left = -468.0
+offset_top = -385.0
+offset_right = -308.0
+offset_bottom = -255.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 39
+text = "3...2..1."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ny8jc")
+volume_db = -10.28
+
+[node name="Tuto" type="Label" parent="."]
+offset_left = -1026.0
+offset_top = 242.0
+offset_right = -204.0
+offset_bottom = 372.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 39
+text = "Right-click to get Pingu!"
+horizontal_alignment = 1
+vertical_alignment = 1
